@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace LsWinVersion {
     public enum Versions {
@@ -19,6 +20,8 @@ namespace LsWinVersion {
 
         private static readonly int _major = Environment.OSVersion.Version.Major;
         private static readonly int _minor = Environment.OSVersion.Version.Minor;
+        private const string _key = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+        private const string _subKey = "CurrentMajorVersionNumber";
 
         private static bool DwmIsCompositionEnabled {
             get {
@@ -36,7 +39,7 @@ namespace LsWinVersion {
 
                 if (!isWin10) {
                     try {
-                        isWin10 = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMajorVersionNumber", null).ToString() == "10";
+                        isWin10 = Registry.GetValue(_key, _subKey, null).ToString() == "10";
                     } catch (Exception) {
                         isWin10 = false;
                     }
