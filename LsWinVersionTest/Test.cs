@@ -23,6 +23,8 @@ namespace LsWinVersionTest {
                 version = "Windows 8";
             } else if (WinVersion.IsWindows(Versions.Windows7)) {
                 version = "Windows 7";
+            } else if (WinVersion.IsWindows(Versions.WindowsVista)) {
+                version = "Windows Vista";
             } else if (WinVersion.IsWindows(Versions.WindowsXP)) {
                 version = "Windows XP";
             } else if (WinVersion.IsWindows(Versions.Unknow)) {
