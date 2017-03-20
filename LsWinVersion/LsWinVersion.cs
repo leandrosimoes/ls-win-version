@@ -14,9 +14,6 @@ namespace LsWinVersion {
     }
 
     public static class WinVersion {
-        [DllImport("user32.dll", EntryPoint = "GetDesktopWindow")]
-        private static extern IntPtr GetDesktopWindow();
-
         [DllImport("dwmapi.dll", EntryPoint = "DwmIsCompositionEnabled", PreserveSig = false)]
         private static extern bool DwmIsCompositionEnabled32();
 
